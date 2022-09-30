@@ -87,13 +87,19 @@ const renderTodos = (page = 1) => {
       editModal.classList.add("show");
     });
   });
-  // id sıralaması ("id" başlığına tıklayınca)
+  // Filitrelemeler
+  // id sıralaması 
   document.querySelector("#id-sorting").addEventListener("click", () => {
-    todos.sort((a, b) => b.id - a.id); // büyükten küçüğe sıralamaya yarar
+    todos.sort((a, b) => b.id - a.id); 
     renderTodos(current_page);
   });
 
-  // durum sıralaması ("durum" başlığına tıklayınca)
+  // kullanıcı id sıralaması 
+  document.querySelector("#userId-sorting").addEventListener("click", () => {
+	todos.sort((a, b) => b.id - a.id);
+	renderTodos(current_page);
+  });
+  // durum sıralaması 
   document.querySelector("#status-sorting").addEventListener("click", () => {
     todos.sort((a, b) => {
       const nameA = a.completed;
@@ -108,13 +114,8 @@ const renderTodos = (page = 1) => {
     });
     renderTodos(current_page);
   });
-
-  // kullanıcı id sıralaması ("kullanıcı id" başlığına tıklayınca)
-  document.querySelector("#userId-sorting").addEventListener("click", () => {
-    todos.sort((a, b) => b.id - a.id); // büyükten küçüğe sıralamaya yarar
-    renderTodos(current_page);
-  });
 };
+
 
 editModal.querySelector("#save").addEventListener("click", () => {
   todo.title = editModal.querySelector("#title").value;
